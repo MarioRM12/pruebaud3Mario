@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:insert,data-th-insert th:include="fragments/general.html :: Bootstrap"/>
+    <title>Peliculas</title>
+</head>
+<body>
+<div id="contenedora" style="float:none; margin: 0 auto;width: 95%;" >
+    <div class="clearfix">
+        <div style="float: left; width: 50%">
+            <h1>Peliculas</h1>
+        </div>
+        <div style="float: none;width: auto;overflow: hidden;min-height: 80px;position: relative;">
+
+            <div style="position: absolute; left: 39%; top : 39%;">
+                <form action="/pelicula/crear">
+                    <input type="submit" class="btn btn-primary" value="Crear">
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="clearfix">
+        <hr/>
+    </div>
+    <div class="clearfix">
+        <div style="float: left;width: 14%">Id</div>
+        <div style="float: left;width: 14%">Titulo</div>
+        <div style="float: left;width: 14%">Lanzamiento</div>
+        <div style="float: left;width: 14%">duracion</div>
+        <div style="float: left;width: 14%">ultima actualizacion</div>
+        <div style="float: none;width: auto;overflow: hidden;">Acción</div>
+    </div>
+    <div class="clearfix">
+        <hr/>
+    </div>
+
+    <div  th:each="pelicula : ${listapelicula}" style="margin-top: 6px;" class="clearfix">
+        <div style="float: left;width: 14%" th:text="${pelicula.getId()}">0</div>
+        <div style="float: left;width: 14%" th:text="${pelicula.getTitulo()}">titulo</div>
+        <div style="float: left;width: 14%" th:text="${pelicula.getFechaLanzamiento()}">lanzamiento</div>
+        <div style="float: left;width: 14%" th:text="${pelicula.getDuracion()} + ' min'">duracion</div>
+        <div style="float: left;width: 14%" th:text="${pelicula.getUltimaActualizacion()}">actualizacion</div>
+        <div style="float: none;width: auto;overflow: hidden;">
+
+            <form style="display: inline;">
+                <input type="submit" class="btn btn-primary" value="ver detalle"/>
+            </form>
+
+            <form style="display: inline;">
+                <input type="submit" class="btn btn-warning" value="editar"/>
+            </form>
+
+            <form method="post" style="display: inline;">
+                <input type="submit" class="btn btn-danger" value="Borrar"/>
+            </form>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
